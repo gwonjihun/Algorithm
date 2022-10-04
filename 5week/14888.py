@@ -1,6 +1,3 @@
-import mimetypes
-
-
 n = int(input())
 arr = list(map(int,input().split()))
 add, mi, mu, did = map(int,input().split())
