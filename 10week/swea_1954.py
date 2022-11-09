@@ -42,19 +42,12 @@ T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    '''
+    size = int(input())
+    dx = [0,1,0,-1]
+    dy = [1,0,-1,1]
+    text = 1
+    arr = [[0 for _ in range(size)] for _ in range(size)]
+    for i in range(4):
+        x , y = 0,0
 
-        이 부분에 여러분의 알고리즘 구현이 들어갑니다.
-
-    '''
     # ///////////////////////////////////////////////////////////////////////////////////
-    n = int(input())
-    arr = list(map(int,input().split()))
-    max_cost = 0
-    total = 0
-    for i in range(n-1,-1,-1):
-        if max_cost <= arr[i]:
-            max_cost = arr[i]
-        total += max_cost - arr[i]
-    
-    print(f"{test_case} {total}")

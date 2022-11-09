@@ -38,23 +38,17 @@ print(f)                                문자열 1개 출력하는 예제
 #import sys
 #sys.stdin = open("input.txt", "r")
 
-T = int(input())
+T = 10
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    '''
-
-        이 부분에 여러분의 알고리즘 구현이 들어갑니다.
-
-    '''
-    # ///////////////////////////////////////////////////////////////////////////////////
-    n = int(input())
+    nums = int(input())
     arr = list(map(int,input().split()))
-    max_cost = 0
-    total = 0
-    for i in range(n-1,-1,-1):
-        if max_cost <= arr[i]:
-            max_cost = arr[i]
-        total += max_cost - arr[i]
-    
-    print(f"{test_case} {total}")
+    total = 0 
+    for i in range(2,nums-2):
+        l_max ,r_max = max(arr[i-2],arr[i-1]), max(arr[i+1],arr[i+2])
+        if l_max >= arr[i] or r_max >= arr[i]:
+            continue
+        total += arr[i] - max(l_max, r_max)
+    print(f'#{test_case} {total}')
+    # ///////////////////////////////////////////////////////////////////////////////////
