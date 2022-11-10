@@ -1,20 +1,49 @@
-n , m = map(int,input().split())
+n = int(input())
 
-arr = [ int(input()) for _ in range(n)]
+dp = [[-1 for _ in range(n)] for _ in range(n)]
 
-dp = [10001]* (m+1)
- # 최소값을 구하므로 dp배열에 최대값 이상의 값으로 저장
-dp[0] = 0
-for i in range(n):
-    for j in range(1,m+1): 
-        if j-arr[i]>=0:
-            # j-arr[i]가 -인경우 배열의 인덱스 접근이 불가하게 설정해야함
-            if dp[j - arr[i]] != 10001:
-                # dp[j-arr[i]]가 존재하는 경우를 확
-                dp[j] = min(dp[j],dp[j-arr[i]]+1)
+land = [list(map(int,input().split())) for _ in range(n)]
 
-print(dp)
-if dp[m] ==10001:
-    print(-1)
-else:
-    print(dp[-1])
+print(land)
+
+def dfs(start,end):
+    if dp[start][end]!=-1:
+        return dp[start][end]
+    if start == n-1:
+        if(land[n-1][0] -land[end][0]<=land[n-1][1]) :
+            dp[start][end] = 1
+            return dp[start][end]
+        else:
+            dp[start][end] = 0
+            return dp[start][end]
+    elif end == n-1:
+        dp[start][end] = 0
+        return dp[start][end]
+
+    mp = max(start,end)+1
+    dp[start][end]=0
+    # print('-------------------------------------------',start, end)
+    for i in range(mp,n):
+        # print('first i :',i,n)
+        # print(land[i][0]-land[start][0], land[start][1])
+        if land[i][0]-land[start][0] <= land[start][1]:
+            a = dfs(i,end)
+            # print(a)
+            dp[start][end] += a
+            dp[start][end] %=1000
+
+    # print('*****************************************',start,end)
+    for i in range(mp,n):
+        # print(land[i][0]-land[start][0])
+        if land[i][0]-land[end][0] <= land[i][1] and land[i][2]==1:
+            a =  dfs(start,i)
+            # print(a)
+            dp[start][end] +=a
+            dp[start][end] %=1000
+            
+
+    return dp[start][end]
+
+
+print(dfs(0,0))
+# print(dp)
