@@ -34,4 +34,3 @@ for test_case in range(T):
                 bfs(arr,i,j)
                 answer +=1
     print(answer)
-    
