@@ -23,6 +23,7 @@ def dfs(start,end):
     mp = max(start,end)+1
     dp[start][end]=0
     # print('-------------------------------------------',start, end)
+    # 공주한테 가는 경로
     for i in range(mp,n):
         # print('first i :',i,n)
         # print(land[i][0]-land[start][0], land[start][1])
@@ -31,7 +32,7 @@ def dfs(start,end):
             # print(a)
             dp[start][end] += a
             dp[start][end] %=1000
-
+#   시작점까지 가는경로
     # print('*****************************************',start,end)
     for i in range(mp,n):
         # print(land[i][0]-land[start][0])
@@ -46,4 +47,4 @@ def dfs(start,end):
 
 
 print(dfs(0,0))
-# print(dp)
+
