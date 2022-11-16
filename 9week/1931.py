@@ -4,7 +4,7 @@ for i in range(n):
     s, e = map(int,input().split())
     arr[i][0]=s
     arr[i][1]=e
-
+#  
 arr.sort(key= lambda x:(x[1],x[0]))
 cnt= 1 
 end = arr[0][1]
