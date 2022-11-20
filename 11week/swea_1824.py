@@ -22,6 +22,8 @@ print(f)                                문자열 1개 출력하는 예제
 '''
 
 
+
+
 '''
       아래의 구문은 input.txt 를 read only 형식으로 연 후,
       앞으로 표준 입력(키보드) 대신 input.txt 파일로부터 읽어오겠다는 의미의 코드입니다.
@@ -33,22 +35,22 @@ print(f)                                문자열 1개 출력하는 예제
 
       단, 채점을 위해 코드를 제출하실 때에는 반드시 아래 구문을 지우거나 주석 처리 하셔야 합니다.
 '''
+#import sys
 #sys.stdin = open("input.txt", "r")
 
 T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+dx=[]
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
-    n = int(input())
-    visited = [0]*201
-    for _ in range(n):
-        start ,end = map(int,input().split())
-        start = (start+start%2)//2
-        end = (end+end%2)//2
-        hi = max(start,end)
-        row = min(start,end)
-        for i in range(row,hi+1):
-            visited[i]+=1
-    print(f'#{test_case} {max(visited)}')
-
+    a = list(input())
+    memory = 0
+    print(a)
+    for i in a:
+        if i.isnumeric():
+            memory = int(i)
+        else:
+            if i =='>':
+                print()
+            elif i == '<':
     # ///////////////////////////////////////////////////////////////////////////////////
