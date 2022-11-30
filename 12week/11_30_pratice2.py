@@ -1,15 +1,25 @@
-def binary_search(arr,start,end):
-    if start>end:
-        return -1
-    mid = (start+end)//2
+from collections import deque
+n,m,k,x = map(int,input().split())
+graph = [[] for _ in range(n+1)]
 
-    if arr[mid] == mid:
-        return mid
-    elif arr[mid]<mid:
-        return binary_search(arr,mid+1,end)
-    else:
-        return binary_search(arr,start,mid-1)
+for _ in range(m):
+    a,b = map(int,input().split())
+    graph[a].append(b)
 
-n = int(input())
-arr = list(map(int,input().split()))
-print(binary_search(arr,0,n-1))
+visited = [-1]*(n+1)
+visited[x]= 0
+
+q = deque([x])
+while q:
+    temp = q.popleft()
+    for i in graph[temp]:
+        if visited[i]==-1:
+            visited[i]= visited[temp]+1
+            q.append(i)
+
+if k in visited:
+    for i in range(1,n+1):
+        if visited[i]==k:
+            print(i)
+else:
+    print(-1)
