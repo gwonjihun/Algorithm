@@ -2,7 +2,7 @@ n = int(input())
 
 arr =[list(map(int,input())) for _ in range(n)]
 
-print(arr)
+# print(arr)
 
 def check_dif(x,y,n):
     check = arr[x][y]
