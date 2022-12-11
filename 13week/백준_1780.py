@@ -3,7 +3,7 @@ n = int(input())
 arr =[list(map(int,input().split())) for _ in range(n)]
 
 
-print(arr)
+# print(arr)
 
 glo_zero = 0
 glo_min = 0
