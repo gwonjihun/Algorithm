@@ -8,3 +8,4 @@ def solution(arr1, arr2):
         for j in range(x_length):
             answer[i][j] = sum([arr1[i][k]*arr2[k][j] for k in range(len(arr1[0]))])
     return answer
+    
